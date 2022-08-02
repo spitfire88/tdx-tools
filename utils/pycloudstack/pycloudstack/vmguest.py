@@ -69,10 +69,14 @@ class VMGuest:
         self.mem_numa = mem_numa
 
         # Update rootfs in kernel command line depending on distro
+        rootfs_ubuntu = "root=/dev/vda1"
+        rootfs_centos = "root=/dev/vda3"
         if guest_distro == "ubuntu":
-            self.cmdline.add_field_from_string("root=/dev/vda1")
+            if not self.cmdline.is_field_exists(rootfs_ubuntu):
+                self.cmdline.add_field_from_string(rootfs_ubuntu)
         else:
-            self.cmdline.add_field_from_string("root=/dev/vda3")
+            if not self.cmdline.is_field_exists(rootfs_centos):
+                self.cmdline.add_field_from_string(rootfs_centos)
 
         self.ssh_forward_port = DUT.find_free_port()
         LOG.info("VM SSH forward: %d", self.ssh_forward_port)
