@@ -1,0 +1,8 @@
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(lsb_release -i -s 2> /dev/null || echo Debian)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL="console"
+GRUB_CMDLINE_LINUX="root=/dev/sda1 rw console=tty0 earlyprintk=ttyS0,115200,keep tdx_disable_filter ioremap_force_shared net.ifnames.prefix=net ipv6.disable=1 systemd.show_status=yes"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_ENABLE_BLSCFG=true

@@ -45,6 +45,11 @@ ARGS+=" --run-command 'resize2fs /dev/sda1'"
 ARGS+=" --run-command 'ssh-keygen -A'"
 ARGS+=" --run-command 'dpkg -i /srv/${REPO_NAME}/linux-*.deb'"
 
+# Setup grub
+ARGS+=" --copy-in config/grub:/etc/default/"
+ARGS+=" --run-command 'grub-editenv /boot/efi/EFI/ubuntu/grubenv create'"
+ARGS+=" --run-command 'grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg'"
+
 echo "${ARGS}"
 eval virt-customize "${ARGS}"
 
