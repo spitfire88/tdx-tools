@@ -20,8 +20,8 @@ bootloader --timeout 5 --append "console=tty0 console=ttyS0,115200 net.ifnames.p
 reqpart
 
 # Create Partitions
-part biosboot --fstype=biosboot --ondisk vda --size=1
-part /boot/efi --fstype efi --ondisk vda --size 200 --fsoptions "umask=0077,shortname=winnt" --label "esp"
+part biosboot --fstype=biosboot --ondisk sda --size=1
+part /boot/efi --fstype efi --ondisk sda --size 200 --fsoptions "umask=0077,shortname=winnt" --label "esp"
 part / --fstype xfs --asprimary --size 1024 --grow --label "td_root"
 
 selinux --disabled

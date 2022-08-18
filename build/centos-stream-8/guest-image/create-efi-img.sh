@@ -36,7 +36,7 @@ eval virt-install \
     --os-variant centos8 \
     --network bridge=virbr0 \
     --nographics \
-    --disk=${IMAGE_NAME},bus=virtio,format=qcow2,size=${IMAGE_SIZE} \
+    --disk=${IMAGE_NAME},bus=sata,format=qcow2,size=${IMAGE_SIZE} \
     --location="${ISO}" \
     --initrd-inject ${KS_DIR}/${KS_EFI} \
     --initrd-inject ${KS_DIR}/${KS_OS} \
